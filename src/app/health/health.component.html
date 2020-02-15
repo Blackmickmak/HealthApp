@@ -1,0 +1,23 @@
+<h1>Health App</h1>
+<br>
+<div>
+<label>Imperial</label><input [(ngModel)]="unit" value="1" type="radio" name="unit">
+<label>Metric</label><input [(ngModel)]="unit"  value="2" type="radio" name="unit">
+</div>
+
+<div>
+<label>Male</label><input [(ngModel)]="gender" value="1" type="radio" name="gender">
+<label>Female</label><input [(ngModel)]="gender" value="2" type="radio" name="gender">
+</div>
+
+<div class="slidecontainer">
+    <p><label>Height</label></p>
+    <input type="range" min="100" max="250" value="125" (ngModelChange)="heightChanhged()">
+    <p><span #height></span></p>
+</div>
+
+<div>
+    <label>Weight(20- 400)</label><input [(ngModel)]="weight"><ng-container *ngIf="unit==1">lbs</ng-container><ng-container *ngIf="unit==2">kg</ng-container>
+        <br>
+    <label>Age(13 -120)</label><input [(ngModel)]="age">years
+</div>
