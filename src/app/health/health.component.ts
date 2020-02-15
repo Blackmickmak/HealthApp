@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-health',
@@ -6,18 +7,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./health.component.css']
 })
 export class HealthComponent implements OnInit {
+  bmi: number;
+  bmiTag: string;
 
-  constructor() { }
+  constructor(private appSRV: AppService) { }
 
   ngOnInit() {
   }
-  gender = "1";
-  unit = "1";
-  weight = 0;
-  age = 0;
-  height = 0;
 
   heightChanhged(){
+    
+  }
+
+  getBmi(){
+    if (this.appSRV.weight > 0) {
+      this.bmi = this.appSRV.getBmi();
+      this.bmiTag = this.appSRV.getBmiTag();
+    }else{
+      alert("Please enter weight and height")
+    }
     
   }
 }

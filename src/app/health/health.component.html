@@ -1,23 +1,30 @@
 <h1>Health App</h1>
 <br>
-<div>
-<label>Imperial</label><input [(ngModel)]="unit" value="1" type="radio" name="unit">
-<label>Metric</label><input [(ngModel)]="unit"  value="2" type="radio" name="unit">
+<div class="frame">
+<h2>BMI</h2>
+<h3>{{bmi}}</h3>
+<h4>{{bmiTag}}</h4>
 </div>
+<!-- <div>
+<label>Imperial</label><input [(ngModel)]="appSRV.unit" value="1" type="radio" name="unit">
+<label>Metric</label><input [(ngModel)]="appSRV.unit"  value="2" type="radio" name="unit">
+</div> -->
 
 <div>
-<label>Male</label><input [(ngModel)]="gender" value="1" type="radio" name="gender">
-<label>Female</label><input [(ngModel)]="gender" value="2" type="radio" name="gender">
+<label>Male</label><input [(ngModel)]="appSRV.gender" value="1" type="radio" name="gender">
+<label>Female</label><input [(ngModel)]="appSRV.gender" value="2" type="radio" name="gender">
 </div>
 
 <div class="slidecontainer">
     <p><label>Height</label></p>
-    <input type="range" min="100" max="250" value="125" (ngModelChange)="heightChanhged()">
-    <p><span #height></span></p>
+    <input type="range" min="100" max="250" value="125" [(ngModel)]="appSRV.height" (ngModelChange)="heightChanhged()">
+    <p><span>{{appSRV.height/100}} m</span></p>
 </div>
 
 <div>
-    <label>Weight(20- 400)</label><input [(ngModel)]="weight"><ng-container *ngIf="unit==1">lbs</ng-container><ng-container *ngIf="unit==2">kg</ng-container>
+    <label>Weight</label><input [(ngModel)]="appSRV.weight">kg
         <br>
-    <label>Age(13 -120)</label><input [(ngModel)]="age">years
+    <label>Age</label><input [(ngModel)]="appSRV.age">years
 </div>
+<button (click)="getBmi()">bmi</button>
+
